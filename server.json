@@ -1,10 +1,10 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.ChrisRoyse/Astrolabe",
+  "name": "io.github.SynapticSmith/Astrolabe",
   "title": "Astrolabe",
   "description": "Calyx x codebase-memory-mcp code intelligence server with legacy CBM compatibility, provenance, shadow vaulting, and Astrolabe diagnostic surfaces.",
   "repository": {
-    "url": "https://github.com/ChrisRoyse/Astrolabe",
+    "url": "https://github.com/SynapticSmith/Astrolabe",
     "source": "github"
   },
   "version": "0.1.0",

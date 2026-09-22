@@ -841,7 +841,7 @@ function Read-CbmRecoveryTrackerEvidence {
         [Parameter(Mandatory)][int]$OwningIssue,
         [Parameter(Mandatory)][string]$ExpectedEvidenceLine
     )
-    $pattern = '^https://github\.com/ChrisRoyse/Astrolabe/issues/' +
+    $pattern = '^https://github\.com/SynapticSmith/Astrolabe/issues/' +
         [Regex]::Escape([string]$OwningIssue) + '#issuecomment-(?<id>[1-9][0-9]*)$'
     if ($CommentUrl -cnotmatch $pattern) {
         Throw-CbmMigrationError -Code 'CBM_STORE_MIGRATION_RECOVERY_TRACKER_URL_INVALID' `
@@ -862,7 +862,7 @@ function Read-CbmRecoveryTrackerEvidence {
     $start.RedirectStandardOutput = $true
     $start.RedirectStandardError = $true
     $start.ArgumentList.Add('api')
-    $start.ArgumentList.Add("repos/ChrisRoyse/Astrolabe/issues/comments/$commentId")
+    $start.ArgumentList.Add("repos/SynapticSmith/Astrolabe/issues/comments/$commentId")
     $process = [Diagnostics.Process]::new()
     $process.StartInfo = $start
     if (-not $process.Start()) {
@@ -901,10 +901,10 @@ function Read-CbmRecoveryTrackerEvidence {
             -Message "GitHub comment response is not valid JSON: $($_.Exception.Message)" `
             -Remediation 'preserve migration state and investigate the GitHub API response'
     }
-    $expectedApiIssue = "https://api.github.com/repos/ChrisRoyse/Astrolabe/issues/$OwningIssue"
+    $expectedApiIssue = "https://api.github.com/repos/SynapticSmith/Astrolabe/issues/$OwningIssue"
     if ([long]$comment.id -ne $commentId -or [string]$comment.html_url -cne $CommentUrl -or
         [string]$comment.issue_url -cne $expectedApiIssue -or
-        [string]$comment.user.login -cne 'ChrisRoyse' -or
+        [string]$comment.user.login -cne 'SynapticSmith' -or
         [string]$comment.author_association -cne 'OWNER') {
         Throw-CbmMigrationError -Code 'CBM_STORE_MIGRATION_RECOVERY_TRACKER_IDENTITY_MISMATCH' `
             -Message 'tracker response does not bind the exact repository owner, issue, comment id, and canonical URL' `

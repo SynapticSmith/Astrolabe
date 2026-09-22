@@ -7378,7 +7378,7 @@ if ($RecoverPreservedTarget) {
             [ref]$expectedRecoveryEntryCount
         ) -or $expectedRecoveryEntryCount -lt 0 -or
         $PriorRecoveryTransactionId -cnotmatch '^[0-9a-f]{32}$' -or
-        $TrackerCommentUrl -cnotmatch "^https://github\.com/ChrisRoyse/Astrolabe/issues/$drivingIssue#issuecomment-[1-9][0-9]*$") {
+        $TrackerCommentUrl -cnotmatch "^https://github\.com/SynapticSmith/Astrolabe/issues/$drivingIssue#issuecomment-[1-9][0-9]*$") {
         throw "TARGET_RECOVERY[ASTRO_PRESERVED_TARGET_ARGUMENT_INVALID]: {code=ASTRO_PRESERVED_TARGET_ARGUMENT_INVALID; message=`"preserved-target recovery requires the canonical root, no child command/bootstrap, exact lowercase inventory/transaction hashes, a nonnegative entry count, and a tracker URL for the driving issue`"; remediation=`"post the exact inventory evidence on the driving issue and pass only the documented recovery parameters`"}"
     }
 }
@@ -8465,7 +8465,7 @@ try {
         $readTrackerComment = {
             $capture = Invoke-NativeCapture `
                 -Exe $ghCommand.Source `
-                -Arguments @('api', "repos/ChrisRoyse/Astrolabe/issues/comments/$commentId")
+                -Arguments @('api', "repos/SynapticSmith/Astrolabe/issues/comments/$commentId")
             if ($capture.ExitCode -ne 0) {
                 throw "gh api failed while reading tracker comment (exit=$($capture.ExitCode)): $(@($capture.Output) -join ' ')"
             }

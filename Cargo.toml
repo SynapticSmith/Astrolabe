@@ -18,7 +18,7 @@ exclude = [
 version = "0.1.0"
 edition = "2024"
 rust-version = "1.95"
-repository = "https://github.com/ChrisRoyse/Astrolabe"
+repository = "https://github.com/SynapticSmith/Astrolabe"
 publish = false
 
 [workspace.dependencies]

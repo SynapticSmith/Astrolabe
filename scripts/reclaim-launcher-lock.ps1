@@ -5487,7 +5487,7 @@ function Invoke-GhCommentRead {
     $process.StartInfo = [Diagnostics.ProcessStartInfo]::new()
     $process.StartInfo.FileName = $gh.Source
     $process.StartInfo.Arguments =
-        "api --hostname github.com repos/ChrisRoyse/Astrolabe/issues/comments/$CommentId"
+        "api --hostname github.com repos/SynapticSmith/Astrolabe/issues/comments/$CommentId"
     $process.StartInfo.UseShellExecute = $false
     $process.StartInfo.CreateNoWindow = $true
     $process.StartInfo.RedirectStandardOutput = $true
@@ -5548,7 +5548,7 @@ function Invoke-GhCommentRead {
             'preserve the lock and inspect authenticated gh output'
     }
     $expectedIssueApi =
-        "https://api.github.com/repos/ChrisRoyse/Astrolabe/issues/$ExpectedIssue"
+        "https://api.github.com/repos/SynapticSmith/Astrolabe/issues/$ExpectedIssue"
     if ($comment.id -isnot [long] -and $comment.id -isnot [int]) {
         Fail-Astro 'ASTRO_LAUNCHER_LOCK_RECLAIM_TRACKER_READ_INVALID' `
             'tracker comment id is not an integral JSON number' `
@@ -5558,7 +5558,7 @@ function Invoke-GhCommentRead {
         $comment.issue_url -isnot [string] -or
         [string]$comment.issue_url -cne $expectedIssueApi -or
         $comment.user.login -isnot [string] -or
-        [string]$comment.user.login -cne 'ChrisRoyse' -or
+        [string]$comment.user.login -cne 'SynapticSmith' -or
         $comment.author_association -isnot [string] -or
         [string]$comment.author_association -cne 'OWNER' -or
         $comment.body -isnot [string]) {
@@ -5587,7 +5587,7 @@ function Read-TrackerEvidence {
         [Parameter(Mandatory)]$OwnerProbe
     )
 
-    $urlPattern = '^https://github\.com/ChrisRoyse/Astrolabe/issues/' +
+    $urlPattern = '^https://github\.com/SynapticSmith/Astrolabe/issues/' +
         [Regex]::Escape([string]$Issue) +
         '#issuecomment-(?<id>[0-9]+)$'
     $urlMatch = [Regex]::Match($CommentUrl, $urlPattern)

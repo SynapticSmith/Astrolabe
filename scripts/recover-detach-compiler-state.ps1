@@ -676,7 +676,7 @@ function Invoke-AstroRecoveryGhRead {
     $start = [Diagnostics.ProcessStartInfo]::new()
     $start.FileName = $gh.Source
     $start.Arguments =
-        "api repos/ChrisRoyse/Astrolabe/issues/comments/$CommentId"
+        "api repos/SynapticSmith/Astrolabe/issues/comments/$CommentId"
     $start.UseShellExecute = $false
     $start.CreateNoWindow = $true
     $start.RedirectStandardOutput = $true
@@ -715,7 +715,7 @@ function Read-AstroRecoveryTrackerEvidence {
         [string]$ProbeSha256,
         [string]$TargetsSha256
     )
-    $pattern = '^https://github\.com/ChrisRoyse/Astrolabe/issues/' +
+    $pattern = '^https://github\.com/SynapticSmith/Astrolabe/issues/' +
         [Regex]::Escape([string]$IssueValue) + '#issuecomment-([0-9]+)$'
     $match = [Regex]::Match($Url, $pattern)
     if (-not $match.Success) {
